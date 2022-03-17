@@ -1,0 +1,31 @@
+﻿@model List<CrudApp2.Models.EmpModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Crud Program</h1>
+<table class="table table-bordered table-responsive">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>City</th>
+        <th>Salary</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.id</td>
+            <td>@item.name</td>
+            <td>@item.email</td>
+            <td>@item.city</td>
+            <td>@item.salary</td>
+            <td><a href="@Url.Action("Edit","Emp", new { item.id})" class="btn btn-success">Edit</a></td>
+            <td><a href="@Url.Action("Delete","Emp", new { item.id})" class="btn btn-danger">Delete</a></td>
+        </tr>
+    }
+    <button type="button" class="btn btn-primary" onclick="window.location.href = 'Emp';">Add Emp</button>
+</table>
